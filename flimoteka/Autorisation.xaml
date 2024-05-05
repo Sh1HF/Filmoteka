@@ -1,0 +1,29 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:flimoteka"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="flimoteka.Autorisation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Background="#282828"
+        Title="Авторизация" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10,99,160,99" MinHeight="236" MinWidth="230" RenderTransformOrigin="0,0.5">
+            <Label Content="CRM Домкино" HorizontalAlignment="Left" Width="230" FontSize="20" FontStyle="Italic" Background="{x:Null}" Margin="0,0,0,10" Foreground="#FFF0F0F0"/>
+            <TextBox x:Name="loginBTH" materialDesign:HintAssist.Hint="Логин" HorizontalAlignment="Left" TextWrapping="Wrap"  Foreground="#FF969696" Background="#FF323232" VerticalAlignment="Top" Width="229" Height="26" BorderThickness="0,0,0,0" TextChanged="TextBox_TextChanged" />
+            <PasswordBox x:Name="passwordBTH" Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Пароль" Width="229" Height="26.5" Margin="0,10,0,10"/>
+            <Button Content="Вход" HorizontalAlignment="Left" Width="229" Height="27" BorderThickness="0,0,0,0" Background="#087099" Foreground="#F0F0F0" />
+            <Button Content="Регистрация" HorizontalAlignment="Left" Width="229" Canvas.Left="6" Canvas.Top="66" Margin="0,10,0,10" Height="27" BorderThickness="0,0,0,0" Background="#087099" Foreground="#F0F0F0" Click="Button_Click"/>
+            <Button Content="Продолжить просмотр страницы" HorizontalAlignment="Center"  Width="229" Height="23" BorderBrush="{x:Null}" Canvas.Left="6" Canvas.Top="119" Cursor="AppStarting" Foreground="#FF969696" Opacity="0.995" Background="{x:Null}" ClickMode="Press" VerticalAlignment="Center" FontSize="12" />
+        </StackPanel>
+        <Image Grid.Column="1" Margin="43,10,43,10" Source="/86.jpg"/>
+    </Grid>
+</Window>
+
+    

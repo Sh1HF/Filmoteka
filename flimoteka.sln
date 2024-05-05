@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flimoteka", "flimoteka\flimoteka.csproj", "{2C451B4D-2DF5-499E-9EF5-7716D672EBA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C451B4D-2DF5-499E-9EF5-7716D672EBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C451B4D-2DF5-499E-9EF5-7716D672EBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C451B4D-2DF5-499E-9EF5-7716D672EBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C451B4D-2DF5-499E-9EF5-7716D672EBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58550E41-4DC8-497F-B1AF-95C3EC9299F1}
+	EndGlobalSection
+EndGlobal
