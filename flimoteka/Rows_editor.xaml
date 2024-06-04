@@ -15,9 +15,9 @@
         <Button x:Name="Search" Grid.Column="1" Content="Поиск" HorizontalAlignment="Left" Margin="315,14,0,0" VerticalAlignment="Top" Height="24" Width="99"/>
         <TextBox Foreground="#FF969696" Background="#FF323232" Grid.Column="1" HorizontalAlignment="Left" Margin="10,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="300" Height="24"/>
         <DataGrid Foreground="#FF969696" Background="#FF323232" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,47,10,10" BorderBrush="#199C1A1A"/>
-        <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" Margin="418,14,0,0" VerticalAlignment="Top" Height="24" Width="100" Click="Button_Click"/>
+        <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Left" Margin="418,14,0,0" VerticalAlignment="Top" Height="24" Width="100"/>
         <Button x:Name="Update" Grid.Column="1" Content="Обновить" HorizontalAlignment="Left" Margin="522,14,0,0" VerticalAlignment="Top" Height="24" Width="100"/>
-        <Button x:Name="Add" Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" Margin="627,14,0,0" VerticalAlignment="Top" Height="24" Width="100" Click="Button_Click"/>
+        <Button x:Name="Add" Grid.Column="1" Content="Добавить" HorizontalAlignment="Left" Margin="627,14,0,0" VerticalAlignment="Top" Height="24" Width="100"/>
 
     </Grid>
 </Window>
