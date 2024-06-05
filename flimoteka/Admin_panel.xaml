@@ -9,21 +9,11 @@
         Title="Панель администратора" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="279*"/>
-            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="473,10,0,0" VerticalAlignment="Top" Height="32" Width="75" Click="Button_Click"/>
-        <TextBox x:Name="text_id"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="ИД Пользователя" VerticalAlignment="Top" Width="458" Height="32" TextChanged="TextBox_TextChanged"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="715,10,0,0" VerticalAlignment="Top" Height="32" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="text_id"  HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="ИД Пользователя" VerticalAlignment="Top" Width="700" Height="32" TextChanged="TextBox_TextChanged"/>
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,47,10,10"/>
-        <Label x:Name="wrap" Grid.Column="1" Content="Список покупок пользователя в разработке" HorizontalAlignment="Left" Margin="33,129,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="132" Width="199" FontSize="22">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-60.292"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
     </Grid>
 </Window>
