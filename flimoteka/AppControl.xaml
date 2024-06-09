@@ -1,0 +1,32 @@
+﻿<Window x:Class="flimoteka.AppControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:flimoteka"
+        mc:Ignorable="d"
+        Title="AppControl" 
+        Background="#282828"
+        Height="576" 
+        Width="1024"
+        materialDesign:BottomDashedLineAdorner.BrushOpacity="50">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64*"/>
+            <RowDefinition Height="147*"/>
+            <RowDefinition Height="69*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="303*"/>
+            <ColumnDefinition Width="721*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1">
+            <Button Content="Добавление фильма" Width="266" x:Name="FilmAdd_F" Click="Button_FilmAddAsync" />
+            <Button Content="Редактор справочников" Margin="0,10,0,0" Width="266" x:Name="RowsEdit_F" Click="Button_RowsAsync"/>
+            <Button Content="Панель Администратора" Margin="0,10,0,0" Width="266" x:Name="Admin_F" Click="Button_AdminAsync"/>
+            <Button Content="Выход" Margin="0,10,0,0" Width="266" x:Name="Exit" Click="Button_ExitAsync"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
