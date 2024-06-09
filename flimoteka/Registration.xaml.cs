@@ -17,18 +17,20 @@ using Microsoft.IdentityModel.Tokens;
 
 
 namespace flimoteka
-
 {
-   
+
     /// <summary>
     /// Логика взаимодействия для Registration.xaml
     /// </summary>
     public partial class Registration : Window
     {
+        SqlConnection sqlConnection;
+        string Connect = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False";
         public Registration()
         {
             InitializeComponent();
-
+            sqlConnection = new SqlConnection(Connect);
+            sqlConnection.Open();
         }
         public DatePicker GetAge()
         {
@@ -48,14 +50,6 @@ namespace flimoteka
 
         protected void Regist_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlConnection;
-            string connectstring;
-
-            connectstring = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False";
-            sqlConnection = new SqlConnection(connectstring);
-
-
-            sqlConnection.Open();
 
             try
             {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -23,11 +24,8 @@ namespace flimoteka
     /// </summary>
     public partial class Autorisation : Window
     {
-        public static string Connect;
-
-
         SqlConnection sqlConnection;
-
+        DB_connect dB_Connect = new DB_connect();
         public Autorisation()
         {
             InitializeComponent();
@@ -47,17 +45,10 @@ namespace flimoteka
         {
             //DB_connect.Connect();
 
-            SqlConnection sqlConnection;
-
-            Connect = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False";
-            sqlConnection = new SqlConnection(Connect);
-
-
-            await sqlConnection.OpenAsync();
-
+            dB_Connect.openConnection();
             if (!string.IsNullOrEmpty(loginBTH.Text) && !string.IsNullOrWhiteSpace(passwordBTH.Password.ToString()))
             {
-                SqlCommand Command0 = new SqlCommand("SELECT * from [Autorisation] WHERE login=@login and passwd=@passwd", sqlConnection);
+                SqlCommand Command0 = new SqlCommand("SELECT * from [Autorisation] WHERE login=@login and passwd=@passwd", dB_Connect.GetConnection());
 
                 Command0.Parameters.AddWithValue("login", loginBTH.Text);
                 Command0.Parameters.AddWithValue("passwd", passwordBTH.Password.ToString());
@@ -70,48 +61,47 @@ namespace flimoteka
                 {
                     await DatR.ReadAsync();
 
-                    if (Convert.ToInt32(DatR["ID_Autorisation"]) == 1)
+                    if (Convert.ToInt32(DatR["ID_Rules"]) == 1)
                     {
                         AdminControl form = new AdminControl();
+                        this.Hide();
                         form.Show();
-                        this.Hide();
                     }
-                    /*else
+                    else
                     {
-                        Form3 form2 = new Form3();
-                        fomr2.Show();
-                        this.Hide();
-                    }*/
+                        MessageBoxButton button = MessageBoxButton.OK;
+                        MessageBoxImage icon = MessageBoxImage.Error;
+                        MessageBoxResult result;
+                        result = System.Windows.MessageBox.Show("Вы не админ окно пока в разработке", "Ошибка", button, icon, MessageBoxResult.Yes);
+                    }
 
                     DatR.Close();
-
+                }
+                else
+                {
+                    Message_box.Visibility = Visibility.Visible;
+                    Message_box.Content = "Заполните данные";
                 }
 
             }
-            else
+        }
+            private void loginBTH_TextChanged(object sender, TextChangedEventArgs e)
             {
-                Message_box.Visibility = Visibility.Visible;
-                Message_box.Content = "Заполните данные";
+
+            }
+
+            private void OnClosing(object sender, CancelEventArgs e)
+            {
+                e.Cancel = true;
+                base.OnClosing(e);
+            }
+
+            private void Button_Click(object sender, RoutedEventArgs e)
+            {
+                Registration form = new Registration();
+
+                this.Hide();
+                form.Show();
             }
         }
-
-        private void loginBTH_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-<<<<<<< HEAD
-        private void OnClosing(object sender, CancelEventArgs e)
-        {
-            e.Cancel = true;
-            base.OnClosing(e);
-=======
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Registration form = new Registration();
-            form.Show();
-            this.Close();
->>>>>>> 01c0cb3ebe1b252078d4b18977f147056c5f4296
-        }
     }
-}

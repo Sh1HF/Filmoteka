@@ -14,47 +14,22 @@ using Microsoft.Data.SqlClient;
 namespace flimoteka
 {
 
-    public static class DB_connect
+    public class DB_connect
     {
-        static SqlConnection sqlConnection;
-
-        public static async void Connect()
+        SqlConnection connectBD = new SqlConnection(@"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False");
+        public void openConnection()
         {
-
-
-            string connectstring;
-
-
-            //connectstring = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User Id = sh1f; Password = 13791379;TrustServerCertificate=True";
-
-            connectstring = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False";
-            sqlConnection = new SqlConnection(connectstring);
-
-            //sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["conStrSheebu"].ConnectionString);
-
-            await sqlConnection.OpenAsync();
-
-
+            if (connectBD.State == System.Data.ConnectionState.Closed)
+                connectBD.Open();
         }
-
-        public static SqlConnection sqlconn()
+        public void closedConnection()
         {
-            return sqlConnection;
+            if (connectBD.State == System.Data.ConnectionState.Open)
+                connectBD.Close();
         }
-
-
-        /*public void Login_BD(string connectstring)
+        public SqlConnection GetConnection()
         {
-            string login = Autorisation.GetLogin();
-
-            if (!string.IsNullOrEmpty(Authorization.GetLogin().Text) && !string.IsNullOrWhiteSpace(textBox1.Text) &&
-              !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrWhiteSpace(textBox2.Text))
-            {
-
-            }
-        
-        
-        }*/
-
+            return connectBD;
+        }
     }
 }

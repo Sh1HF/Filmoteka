@@ -24,19 +24,14 @@ namespace flimoteka
     {
         SqlConnection sqlConnection;
 
-
-        string Connect = Autorisation.Connect;
-
+        DB_connect dB_Connect = new DB_connect();
         public AdminControl()
         {
             InitializeComponent();
 
+            dB_Connect.openConnection();
 
-            sqlConnection = new SqlConnection(Connect);
-
-            sqlConnection.Open();
-
-            SqlCommand films = new SqlCommand("Select * from [films] where filmname=@filmname;", sqlConnection);
+            SqlCommand films = new SqlCommand("Select * from [films] where filmname=@filmname;", dB_Connect.GetConnection());
 
             films.Parameters.AddWithValue("filmname", filmname.Text);
 
