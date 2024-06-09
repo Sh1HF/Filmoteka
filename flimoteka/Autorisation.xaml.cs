@@ -100,10 +100,18 @@ namespace flimoteka
 
         }
 
+<<<<<<< HEAD
         private void OnClosing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
             base.OnClosing(e);
+=======
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Registration form = new Registration();
+            form.Show();
+            this.Close();
+>>>>>>> 01c0cb3ebe1b252078d4b18977f147056c5f4296
         }
     }
 }
