@@ -1,7 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,22 +15,16 @@ using System.Windows.Shapes;
 namespace flimoteka
 {
     /// <summary>
-    /// Логика взаимодействия для Admin_panel.xaml
+    /// Логика взаимодействия для AdminControl.xaml
     /// </summary>
-    public partial class Admin_panel : Window
+    public partial class AdminControl : Window
     {
-        public Admin_panel()
+        public AdminControl()
         {
             InitializeComponent();
-
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DB_connect.Connect();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void TabItem_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
         {
 
         }

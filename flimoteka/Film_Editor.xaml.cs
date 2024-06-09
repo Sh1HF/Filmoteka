@@ -24,55 +24,5 @@ namespace flimoteka
         {
             InitializeComponent();
         }
-
-        private void industry_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Genres_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Coutry_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Produsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void actor_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Pravoobladatel_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void producer_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Reiting_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

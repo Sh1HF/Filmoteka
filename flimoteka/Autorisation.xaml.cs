@@ -67,7 +67,7 @@ namespace flimoteka
 
                     if (Convert.ToInt32(DatR["ID_Autorisation"]) == 1)
                     {
-                        AppControl form = new AppControl();
+                        AdminControl form = new AdminControl();
                         form.Show();
                         this.Hide();
                     }

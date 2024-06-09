@@ -13,16 +13,20 @@
         materialDesign:BottomDashedLineAdorner.BrushOpacity="50">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="103*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="547*"/>
             <ColumnDefinition Width="477*"/>
         </Grid.ColumnDefinitions>
-        <Image Width="364" HorizontalAlignment="Center" Grid.Column="1" Margin="0,19,0,51" Source="/86.jpg" RenderTransformOrigin="1,0.5"/>
+        <Image Grid.Column="1" Margin="57,19,56,7" Source="/86.jpg" RenderTransformOrigin="1,0.5"/>
         <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" RenderTransformOrigin="0,0.5" Margin="126,10,0,0" HorizontalAlignment="Left" Width="350" Height="25" VerticalAlignment="Top"/>
         <Label Foreground="#FF969696" Content="Название фильма:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Height="25" Margin="10,10,0,0"/>
-        <TextBox Foreground="#FF969696" Background="#FF323232" Margin="10,227,10,10" materialDesign:HintAssist.Hint="О чем фильм" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" RenderTransformOrigin="0,1"/>
-        <StackPanel Margin="64,46,291,0"  VerticalAlignment="Top" Height="205">
-            <ComboBox materialDesign:HintAssist.Hint="Правообладатель" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Pravoobladatel"  x:Name="pravoobladatel"  IsEditable="True" IsReadOnly="True" SelectionChanged="Pravoobladatel_SelectionChanged" Width="176" Height="25" >
+        <TextBox Foreground="#FF969696" Background="#FF323232" Margin="10,227,10,10" materialDesign:HintAssist.Hint="О чем фильм" TextWrapping="Wrap"  RenderTransformOrigin="0,1" Grid.RowSpan="2"/>
+        <StackPanel Margin="64,46,291,0"  VerticalAlignment="Top" Height="176">
+            <ComboBox materialDesign:HintAssist.Hint="Правообладатель" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Pravoobladatel"  x:Name="pravoobladatel"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
                         <ComboBoxItem>
@@ -39,7 +43,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Жанр" Foreground="#FF969696" Background="#FF323232"  TextSearch.TextPath ="Genre"  x:Name="genre_Копировать"  IsEditable="True" IsReadOnly="True" SelectionChanged="Genres_SelectionChanged" Width="176" Height="25" Margin="0,10,0,10" >
+            <ComboBox materialDesign:HintAssist.Hint="Жанр" Foreground="#FF969696" Background="#FF323232"  TextSearch.TextPath ="Genre"  x:Name="genre_Копировать"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" Margin="0,10,0,10" >
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
                         <ComboBoxItem>
@@ -56,7 +60,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Актеры"  TextSearch.TextPath ="Actor"  x:Name="margin_Копировать"  IsEditable="True" IsReadOnly="True" SelectionChanged="actor_SelectionChanged" Width="176" Height="25" >
+            <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Актеры"  TextSearch.TextPath ="Actor"  x:Name="margin_Копировать"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
                         <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
@@ -73,7 +77,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Продюсер" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Producer"  x:Name="producer_Копировать"  IsEditable="True" IsReadOnly="True" SelectionChanged="producer_SelectionChanged" Width="176" Height="25" Margin="0,10,0,0" >
+            <ComboBox materialDesign:HintAssist.Hint="Продюсер" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Producer"  x:Name="producer_Копировать"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" Margin="0,10,0,0" >
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
                         <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
@@ -90,10 +94,10 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Хронометраж" Width="176" Height="25" TextChanged="TextBox_TextChanged_1" Margin="0,12,0,0"/>
+            <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Хронометраж" Width="176" Height="25" Margin="0,12,0,0"/>
         </StackPanel>
         <StackPanel Margin="300,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="176" Width="176">
-            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Coutry"  x:Name="coutry"  IsEditable="True" IsReadOnly="True" SelectionChanged="Coutry_SelectionChanged" Width="176" Height="25" >
+            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Coutry"  x:Name="coutry"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
                         <ComboBoxItem>
@@ -110,7 +114,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Produsers"  x:Name="produsers_Копировать1"  IsEditable="True" IsReadOnly="True" SelectionChanged="Produsers_SelectionChanged" Width="176" Height="25" Margin="0,10,0,10" >
+            <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Produsers"  x:Name="produsers_Копировать1"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" Margin="0,10,0,10" >
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
                         <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
@@ -127,7 +131,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Рейтинг" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Reiting"  x:Name="Reiting"  IsEditable="True" IsReadOnly="True" SelectionChanged="Reiting_SelectionChanged" Width="176" Height="25" >
+            <ComboBox materialDesign:HintAssist.Hint="Рейтинг" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Reiting"  x:Name="Reiting"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
                 <ComboBox.ItemsSource>
                     <CompositeCollection>
                         <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
@@ -146,7 +150,6 @@
             </ComboBox>
             <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Год" Width="176" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="0,10,0,0"/>
         </StackPanel>
-        <Button Content="Создать" Margin="0,0,10,10" Grid.Column="1" RenderTransformOrigin="1,1" HorizontalAlignment="Right" Width="84" Height="32" VerticalAlignment="Bottom"/>
-        <Button Content="Обновить" Margin="270,0,0,10" Grid.Column="1" RenderTransformOrigin="1,1" HorizontalAlignment="Left" Width="97" Height="32" VerticalAlignment="Bottom"/>
+        <Button Content="Создать" Margin="383,7,10,6" Grid.Column="1" RenderTransformOrigin="1,1" Grid.Row="1"/>
     </Grid>
 </Window>
