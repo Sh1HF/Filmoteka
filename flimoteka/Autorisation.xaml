@@ -20,7 +20,7 @@
             <TextBox x:Name="loginBTH" materialDesign:HintAssist.Hint="Логин" HorizontalAlignment="Left" TextWrapping="Wrap"  Foreground="#FF969696" Background="#FF323232" VerticalAlignment="Top" Width="229" Height="26" BorderThickness="0,0,0,0" />
             <PasswordBox x:Name="passwordBTH" Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Пароль" Width="229" Height="26.5" Margin="0,10,0,10"/>
             <Button x:Name="Login" Content="Вход" HorizontalAlignment="Left" Width="229" Height="27" BorderThickness="0,0,0,0" Background="#087099" Foreground="#F0F0F0" Click="Button_LoginAsync" />
-            <Button Content="Регистрация" HorizontalAlignment="Left" Width="229" Canvas.Left="6" Canvas.Top="66" Margin="0,10,0,10" Height="27" BorderThickness="0,0,0,0" Background="#087099" Foreground="#F0F0F0" Cursor=""/>
+            <Button Content="Регистрация" HorizontalAlignment="Left" Width="229" Canvas.Left="6" Canvas.Top="66" Margin="0,10,0,10" Height="27" BorderThickness="0,0,0,0" Background="#087099" Foreground="#F0F0F0" Cursor="" Click="Button_Click"/>
             <Button Content="Продолжить просмотр страницы" HorizontalAlignment="Center"  Width="229" Height="23" BorderBrush="{x:Null}" Canvas.Left="6" Canvas.Top="119" Cursor="AppStarting" Foreground="#FF969696" Opacity="0.995" Background="{x:Null}" ClickMode="Press" VerticalAlignment="Center" FontSize="12" />
             <Label x:Name="Message_box" Content="" Visibility="Hidden" Width="230" FontSize="14" Background="{x:Null}" Foreground="#FFF50202" Height="24" RenderTransformOrigin="0.51,0.669" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>

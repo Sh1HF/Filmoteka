@@ -94,5 +94,12 @@ namespace flimoteka
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Registration form = new Registration();
+            form.Show();
+            this.Close();
+        }
     }
 }
