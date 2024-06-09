@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -22,6 +23,11 @@ namespace flimoteka
     /// </summary>
     public partial class Autorisation : Window
     {
+        public static string Connect;
+
+
+        SqlConnection sqlConnection;
+
         public Autorisation()
         {
             InitializeComponent();
@@ -42,10 +48,9 @@ namespace flimoteka
             //DB_connect.Connect();
 
             SqlConnection sqlConnection;
-            string connectstring;
 
-            connectstring = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False";
-            sqlConnection = new SqlConnection(connectstring);
+            Connect = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False";
+            sqlConnection = new SqlConnection(Connect);
 
 
             await sqlConnection.OpenAsync();
@@ -93,6 +98,12 @@ namespace flimoteka
         private void loginBTH_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void OnClosing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            base.OnClosing(e);
         }
     }
 }
