@@ -25,12 +25,11 @@ namespace flimoteka
     public partial class Registration : Window
     {
         SqlConnection sqlConnection;
-        string Connect = @"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False";
+        DB_connect dB_Connect = new DB_connect();
         public Registration()
         {
             InitializeComponent();
-            sqlConnection = new SqlConnection(Connect);
-            sqlConnection.Open();
+            dB_Connect.openConnection();
         }
         public DatePicker GetAge()
         {
@@ -50,13 +49,15 @@ namespace flimoteka
 
         protected void Regist_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 var date1 = Convert.ToDateTime(DateRR.Text).ToString("yyyy-MM-dd");
+
+
+
                 if (Password1.Password.ToString() == PasswordR.Password.ToString() && Password1.Password.Length >= 8 && !string.IsNullOrEmpty(date1) && !string.IsNullOrEmpty(LoginR.Text) && !string.IsNullOrEmpty(Password1.Password.ToString()) && !string.IsNullOrEmpty(Surname.Text) && !string.IsNullOrEmpty(NameR.Text))
                 {
-                    SqlCommand Command0 = new SqlCommand("INSERT INTO Autorisation(ID_Rules,login,passwd,surname,name,age) VALUES (2,@login,@passwd,@Surname,@Name,@Age) ", sqlConnection);
+                    SqlCommand Command0 = new SqlCommand("INSERT INTO Autorisation(ID_Rules,login,passwd,surname,name,age) VALUES (2,@login,@passwd,@Surname,@Name,@Age) ", dB_Connect.GetConnection());
 
                     Command0.Parameters.AddWithValue("login", LoginR.Text);
                     Command0.Parameters.AddWithValue("passwd", Password1.Password.ToString());
@@ -70,6 +71,8 @@ namespace flimoteka
                         MessageBoxImage icon = MessageBoxImage.Question;
                         MessageBoxResult result;
                         result = System.Windows.MessageBox.Show("Вы успешно зарегистрировались", "Успех", button, icon, MessageBoxResult.Yes);
+
+                        dB_Connect.closedConnection();
 
                         Autorisation form = new Autorisation();
                         form.Show();
@@ -86,16 +89,13 @@ namespace flimoteka
             }
 
             catch (Exception ex) {
+
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Error;
                 MessageBoxResult result;
                 result = System.Windows.MessageBox.Show("Не все поля заполнены", "Исключение не обработанно", button, icon, MessageBoxResult.Yes);
+            
             }
-        }
-
-        private void LoginR_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }
