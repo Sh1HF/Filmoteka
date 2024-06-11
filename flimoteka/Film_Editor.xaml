@@ -22,134 +22,23 @@
             <ColumnDefinition Width="477*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Column="1" Margin="57,19,56,7" Source="/86.jpg" RenderTransformOrigin="1,0.5"/>
-        <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" RenderTransformOrigin="0,0.5" Margin="126,10,0,0" HorizontalAlignment="Left" Width="350" Height="25" VerticalAlignment="Top"/>
+        <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" RenderTransformOrigin="0,0.5" Margin="126,10,0,0" HorizontalAlignment="Left" Width="350" Height="25" VerticalAlignment="Top" x:Name="Name_1"/>
         <Label Foreground="#FF969696" Content="Название фильма:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Height="25" Margin="10,10,0,0"/>
-        <TextBox Foreground="#FF969696" Background="#FF323232" Margin="10,227,10,10" materialDesign:HintAssist.Hint="О чем фильм" TextWrapping="Wrap"  RenderTransformOrigin="0,1" Grid.RowSpan="2"/>
+        <TextBox Foreground="#FF969696" Background="#FF323232" Margin="10,227,10,10" materialDesign:HintAssist.Hint="О чем фильм" x:Name="Desctiption_1" TextWrapping="Wrap"  RenderTransformOrigin="0,1" Grid.RowSpan="2"/>
         <StackPanel Margin="64,46,291,0"  VerticalAlignment="Top" Height="176">
-            <ComboBox materialDesign:HintAssist.Hint="Правообладатель" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Pravoobladatel"  x:Name="pravoobladatel"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <ComboBoxItem>
-                            <CheckBox x:Name="allPravoobladatel" Content="All"/>
-                        </ComboBoxItem>
-                        <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="pravoobladatel" IsChecked="{Binding IsChecked, ElementName=allPravoobladatel, Mode=OneWay}" Content="{Binding Industry}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Жанр" Foreground="#FF969696" Background="#FF323232"  TextSearch.TextPath ="Genre"  x:Name="genre_Копировать"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" Margin="0,10,0,10" >
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <ComboBoxItem>
-                            <CheckBox x:Name="allGenres1" Content="All"/>
-                        </ComboBoxItem>
-                        <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="genre" IsChecked="{Binding IsChecked, ElementName=allGenres, Mode=OneWay}" Content="{Binding Industry}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Актеры"  TextSearch.TextPath ="Actor"  x:Name="margin_Копировать"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
-                        <ComboBoxItem>
-                            <CheckBox x:Name="allActor1" Content="All"/>
-                        </ComboBoxItem>
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="allActor" IsChecked="{Binding IsChecked, ElementName=allIndustry, Mode=OneWay}" Content="{Binding Industry}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Продюсер" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Producer"  x:Name="producer_Копировать"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" Margin="0,10,0,0" >
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
-                        <ComboBoxItem>
-                            <CheckBox x:Name="allProducer1" Content="All"/>
-                        </ComboBoxItem>
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="producer" IsChecked="{Binding IsChecked, ElementName=allProducer, Mode=OneWay}" Content="{Binding Industry}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Хронометраж" Width="176" Height="25" Margin="0,12,0,0"/>
+            <ComboBox materialDesign:HintAssist.Hint="Правообладатель" Foreground="#FF969696" Background="#FF323232"  x:Name="pravoobladatel" Width="176" Height="25" />
+            <ComboBox materialDesign:HintAssist.Hint="Жанр" Foreground="#FF969696" Background="#FF323232" x:Name="genre_1" Width="176" Height="25" Margin="0,10,0,10" />
+            <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Актеры"  x:Name="Actors_1" Width="176" Height="25" />
+            <ComboBox materialDesign:HintAssist.Hint="Продюсер" Foreground="#FF969696" Background="#FF323232" x:Name="producer" Width="176" Height="25" Margin="0,10,0,0" />
+            <TextBox Foreground="#FF969696" x:Name="Chronometrazh" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Хронометраж" Width="176" Height="25" Margin="0,12,0,0"/>
         </StackPanel>
         <StackPanel Margin="300,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="176" Width="176">
-            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Coutry"  x:Name="coutry"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <ComboBoxItem>
-                            <CheckBox x:Name="allCountry" Content="All"/>
-                        </ComboBoxItem>
-                        <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="coutry" IsChecked="{Binding IsChecked, ElementName=allCountry, Mode=OneWay}" Content="{Binding Industry}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Produsers"  x:Name="produsers_Копировать1"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" Margin="0,10,0,10" >
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
-                        <ComboBoxItem>
-                            <CheckBox x:Name="allProdusers2" Content="All"/>
-                        </ComboBoxItem>
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="allProdusers" IsChecked="{Binding IsChecked, ElementName=allIndustry, Mode=OneWay}" Content="{Binding Industry}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <ComboBox materialDesign:HintAssist.Hint="Рейтинг" Foreground="#FF969696" Background="#FF323232" TextSearch.TextPath ="Reiting"  x:Name="Reiting"  IsEditable="True" IsReadOnly="True" Width="176" Height="25" >
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <!--<CollectionContainer Collection="{Binding Source={StaticResource industrySource}}"/> # -->
-                        <ComboBoxItem>
-                            <CheckBox x:Name="allReitings" Content="All"/>
-                        </ComboBoxItem>
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="allReitings" IsChecked="{Binding IsChecked, ElementName=allReitings, Mode=OneWay}" Content="{Binding Reiting}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Год" Width="176" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="0,10,0,0"/>
+            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232"  x:Name="coutry" Width="176" Height="25" SelectionChanged="coutry_SelectionChanged" />
+            <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" x:Name="Director_1" Width="176" Height="25" Margin="0,10,0,10" />
+            <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Рейтинг" x:Name="Reitings_1" Width="176" Height="25"/>
+            <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Год" Width="176" x:Name="Year_1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="0,10,0,0"/>
+            <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Бюджет" Width="176" x:Name="Budget_1" Height="25" Margin="0,10,0,0"/>
         </StackPanel>
-        <Button Content="Создать" Margin="383,7,10,6" Grid.Column="1" RenderTransformOrigin="1,1" Grid.Row="1"/>
+        <Button Content="Создать" x:Name="AddRows" Margin="383,7,10,6" Grid.Column="1" RenderTransformOrigin="1,1" Grid.Row="1" Click="AddRows_Click"/>
     </Grid>
 </Window>
