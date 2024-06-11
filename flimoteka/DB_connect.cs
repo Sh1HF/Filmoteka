@@ -19,8 +19,18 @@ namespace flimoteka
         SqlConnection connectBD = new SqlConnection(@"Data Source = dyuhahome.ddns.net,1381; Initial Catalog = FilmotekaDB; User ID = sh1f; Password = 13791379; Encrypt = False; Trust Server Certificate = True; Application Intent = ReadWrite; Multi Subnet Failover = False");
         public void openConnection()
         {
-            if (connectBD.State == System.Data.ConnectionState.Closed)
-                connectBD.Open();
+            try
+            {
+                if (connectBD.State == System.Data.ConnectionState.Closed)
+                    connectBD.Open();
+            }
+            catch(Exception ex)
+            {
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Error;
+                MessageBoxResult result;
+                result = System.Windows.MessageBox.Show("Ошибка подключения к серверу", "Ошибка", button, icon, MessageBoxResult.Yes);
+            }
         }
         public void closedConnection()
         {
