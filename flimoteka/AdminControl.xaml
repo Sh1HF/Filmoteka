@@ -39,9 +39,10 @@
                         <ColumnDefinition Width="113*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="Search" Background="#087099" Foreground="#F0F0F0" Grid.Column="2" Content="Поиск" Margin="1,11,5,6"/>
-                    <TextBox Foreground="#FF969696" Background="#FF323232" Grid.Column="1" HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Введите слово" VerticalAlignment="Top" Width="1137" Height="30"/>
-                    <DataGrid Foreground="#FF969696" Background="#FF323232" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,28" BorderBrush="#199C1A1A" Grid.Row="1" Grid.ColumnSpan="3" SelectionChanged="DataGrid_SelectionChanged"/>
+                    <TextBox Foreground="#FF969696" Background="#FF323232" Grid.Column="1" HorizontalAlignment="Left" Margin="198,12,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Введите слово" VerticalAlignment="Top" Width="920" Height="30"/>
+                    <DataGrid x:Name="tablesgrid" Foreground="#FF969696" Background="#FF323232" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,28" BorderBrush="#199C1A1A" Grid.Row="1" Grid.ColumnSpan="3" SelectionChanged="DataGrid_SelectionChanged"/>
                     <Button x:Name="Add" Background="#087099" Foreground="#F0F0F0" Grid.Column="3" Content="Добавить" Margin="1,11,10,6"/>
+                    <ComboBox x:Name="table_choice" HorizontalAlignment="Left" Margin="40,15,0,0" Width="120" VerticalAlignment="Top" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Выберите таблицу" SelectionChanged="ComboBox_SelectionChanged" DropDownOpened="ComboBox_DropDownOpened"/>
 
                 </Grid>
             </TabItem>
