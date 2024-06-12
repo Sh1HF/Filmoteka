@@ -8,14 +8,31 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Background="#282828"
-        Title="UserUI" Height="720" Width="1280">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="71*"/>
-        </Grid.ColumnDefinitions>
-        <DataGrid Foreground="#FF969696" Background="#FF323232" x:Name="FilmList" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Image Grid.Column="1" Margin="21,10,21,9" Source="/86.jpg" Stretch="Fill"/>
+        Title="Поиск фильмов (пользователь)" Height="720" Width="1280">
+    <DockPanel LastChildFill="False" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="2">
+            <Grid  Height="70">
+                <Button x:Name="LoadMovies" Content="Поиск" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center" Height="30" Width="175" Click="LoadMovies_Click"  />
+                <TextBox  materialDesign:TextFieldAssist.UnderlineBrush="PeachPuff"  Foreground="#FF969696" Background="#FF323232" x:Name="filmname"  HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Введите название фильма" VerticalAlignment="Center" Width="1050" Height="30"/>
+            </Grid>
+        </Border>
+        <Border DockPanel.Dock="Right" BorderBrush="Black" BorderThickness="2">
+            <DataGrid DockPanel.Dock="Right" Width="1000" Foreground="#FF969696" Background="#FF323232" x:Name="FilmList" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        </Border>
+        <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="2" Width="274">
+            <Grid Background="#FF323232" Margin="0,0,-2,0">
+                <Label Foreground="#FF969696" Content="ФИЛЬТР:" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Margin="0,10,0,0"/>
+                <StackPanel Margin="0,72,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="176" Width="176">
+                    <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232"  x:Name="country_filter" Width="176" Height="25" />
+                    <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" x:Name="director_filter" Width="176" Height="25" Margin="0,10,0,10" />
+                    <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Рейтинг" x:Name="rank_filter" Width="176" Height="25"/>
+                    <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Год" Width="176" x:Name="year_filter" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="0,10,0,0"/>
+                    <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Бюджет" Width="176" x:Name="budget_filter" Height="25" Margin="0,10,0,0"/>
+                </StackPanel>
 
-    </Grid>
+                <Button Content="Применить" HorizontalAlignment="Right" Margin="0,508,10,0" VerticalAlignment="Top" Height="30" Width="120"  />
+                <Button Content="Сбросить" HorizontalAlignment="Left" Margin="10,508,0,0" VerticalAlignment="Top" Height="30" Width="120"  />
+            </Grid>
+        </Border>
+    </DockPanel>
 </Window>

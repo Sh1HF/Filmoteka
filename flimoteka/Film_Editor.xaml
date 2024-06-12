@@ -33,7 +33,7 @@
             <TextBox Foreground="#FF969696" x:Name="Chronometrazh" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Хронометраж" Width="176" Height="25" Margin="0,12,0,0"/>
         </StackPanel>
         <StackPanel Margin="300,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="176" Width="176">
-            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232"  x:Name="coutry" Width="176" Height="25" SelectionChanged="coutry_SelectionChanged" ItemsSource="{Binding SelectedIndexChanged, ElementName=coutry}" />
+            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232"  x:Name="coutry" Width="176" Height="25" SelectionChanged="coutry_SelectionChanged"/>
             <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" x:Name="Director_1" Width="176" Height="25" Margin="0,10,0,10" SelectionChanged="Director_1_SelectionChanged" />
             <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Рейтинг" x:Name="Reitings_1" Width="176" Height="25"/>
             <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Год" Width="176" x:Name="Year_1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="0,10,0,0"/>

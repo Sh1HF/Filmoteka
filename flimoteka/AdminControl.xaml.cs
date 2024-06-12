@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +35,8 @@ namespace flimoteka
 
         string columnName;
 
+        DataTable dt;
+
         public AdminControl()
         {
             InitializeComponent();
@@ -60,26 +64,17 @@ namespace flimoteka
 
         }
 
-
-        private void LoadMovies(object sender, RoutedEventArgs e)
+        private void LoadSubs(object sender, RoutedEventArgs e)
         {
+            SqlCommand subs = new SqlCommand("SELECT abonnementName as 'Абонемент',rulesPrivilegies as 'Права',DateAbonement as 'Дата абонемента',login as 'Логин',surname as 'Фамилия',name as 'Имя',age as 'Дата рождения' FROM Autorisation JOIN Rules ON Rules.ID_Rules = Autorisation.ID_Rules\r\nJOIN Abonnement ON Abonnement.ID_Abonnement = Autorisation.ID_Abonement where abonnementName=@abonnementName;", dB_Connect.GetConnection());
 
-            SqlCommand films = new SqlCommand("Select * from [Films] where name=@name;", dB_Connect.GetConnection());
-
-            films.Parameters.AddWithValue("name", filmname.Text);
+            subs.Parameters.AddWithValue("abonnementName", subscribename.Text);
 
             DataTable dt = new DataTable("tables");
 
-            SqlDataAdapter film_reader = new SqlDataAdapter(films);
+            SqlDataAdapter film_reader = new SqlDataAdapter(subs);
             film_reader.Fill(dt);
             AutorisationGrid.ItemsSource = dt.DefaultView;
-        }
-
-        
-
-        private void TabItem_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
-
         }
 
 
@@ -87,21 +82,6 @@ namespace flimoteka
         {
             e.Cancel = true;
             base.OnClosing(e);
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void AutorisationGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void AutorisationGrid_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
-
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -112,7 +92,7 @@ namespace flimoteka
 
                 SqlCommand table = new SqlCommand(String.Format("select * from {0}", tableitem), dB_Connect.GetConnection());
 
-                DataTable dt = new DataTable("table");
+                dt = new DataTable("table");
 
                 SqlDataAdapter table_reader = new SqlDataAdapter(table);
                 table_reader.Fill(dt);
@@ -139,20 +119,162 @@ namespace flimoteka
 
             SqlCommand catalog = new SqlCommand($"select * from {tableitem} where {columnName} LIKE '%{catalog_search.Text}%'", dB_Connect.GetConnection());
 
-            DataTable dt = new DataTable("tables");
+            DataTable tables = new DataTable("tables");
 
             SqlDataAdapter film_reader = new SqlDataAdapter(catalog);
-            film_reader.Fill(dt);
-            tablesgrid.ItemsSource = dt.DefaultView;
+            film_reader.Fill(tables);
+            tablesgrid.ItemsSource = tables.DefaultView;
         }
 
-        private void tablesgrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        private void AutorisationGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            string tableitem = tablesgrid.SelectedItem.ToString();
-            if (tableitem != null)
+            if (!(e.Row == null) && !(e.Row.IsNewItem == true))
             {
+                var cell = (DataRowView)AutorisationGrid.SelectedValue;
+
+                //int index = (int)cell.Row.ItemArray. First();
+
+                string lastname = AutorisationGrid.ColumnFromDisplayIndex(4).Header.ToString();
+                string firstname = AutorisationGrid.ColumnFromDisplayIndex(5).Header.ToString();
+
+                string fnvalue = cell.Row.ItemArray[5].ToString();
+                string lnvalue = cell.Row.ItemArray[4].ToString();
+                
+
+
+
+                //string column = AutorisationGrid.CurrentCell.Column.Header.ToString();
+                string column = e.Column.Header.ToString();
+
+                switch (column)
+                {
+                    case "Абонемент": 
+                        column = "abonnementName";
+                        break;
+                    case "rulesPrivilegies":
+                        column = "rulesPrivilegies";
+                        break;
+                    case "Дата абонемента":
+                        column = "DateAbonement";
+                        break;
+                    case "Логин":
+                        column = "login";
+                        break;
+                    case "Фамилия":
+                        column = "surname";
+                        break;
+                    case "Имя":
+                        column = "name";
+                        break;
+                    case "Дата рождения":
+                        column = "age";
+                        break;
+                    default:
+                        break;
+                }
+
+                var value = (e.EditingElement as System.Windows.Controls.TextBox).Text;
+
+                //var unchanged = cell.Row.ItemArray.Last().ToString();
+
+                using (dB_Connect.GetConnection())
+                {
+                    if (dB_Connect.GetConnection().State == System.Data.ConnectionState.Open)
+                    {
+                        dB_Connect.openConnection();
+                    }
+
+                    SqlCommand updatevalue = new SqlCommand($"UPDATE Autorisation SET {column} = '{value}' FROM Autorisation JOIN Rules ON Rules.ID_Rules = Autorisation.ID_Rules JOIN Abonnement ON Abonnement.ID_Abonnement = Autorisation.ID_Abonement WHERE surname = '{lnvalue}' AND name = '{fnvalue}'", dB_Connect.GetConnection());
+
+                    updatevalue.ExecuteNonQuery();
+
+                }
 
             }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void tablesgrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+
+            if (!(e.Row == null) && !(e.Row.IsNewItem == true))
+            {
+                var cell = (DataRowView)tablesgrid.SelectedValue;
+
+                int index = (int)cell.Row.ItemArray.First();
+
+                string indexcolumn = tablesgrid.ColumnFromDisplayIndex(0).Header.ToString();
+
+                string column = tablesgrid.CurrentCell.Column.Header.ToString();
+
+                var value = (e.EditingElement as System.Windows.Controls.TextBox).Text;
+
+                var unchanged = cell.Row.ItemArray.Last().ToString();
+
+                if (value != null && !value.Equals(unchanged) && !value.Equals(index.ToString())) 
+                {
+                    using (dB_Connect.GetConnection())
+                    {
+                        if (dB_Connect.GetConnection().State == System.Data.ConnectionState.Open)
+                        {
+                            dB_Connect.openConnection();
+                        }
+
+                        SqlCommand updatevalue = new SqlCommand($"UPDATE {table_choice.SelectedItem.ToString()} SET {column} = '{value}' WHERE {indexcolumn} = {index}", dB_Connect.GetConnection());
+
+                        updatevalue.ExecuteNonQuery();
+
+                    }
+                }
+
+            }
+            else 
+            {
+                e.Cancel = true;
+            }
+            
+        }
+
+        private void AutorisationGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
+        }
+
+        private void Tablesgrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            /* Не реализованно (добавление в форме data grid)
+            if (!(e.Row == null) && e.Row.IsNewItem == true)
+            {
+                DataTable row = e.Row.Item as DataTable;
+
+                List<string> columns = new List<string>();
+
+                foreach (DataGridColumn item in tablesgrid.Columns)
+                {
+                    columns.Add(item.Header.ToString());
+                }
+
+                using (dB_Connect.GetConnection())
+                {
+                    if (dB_Connect.GetConnection().State == System.Data.ConnectionState.Open)
+                    {
+                        dB_Connect.openConnection();
+                    }
+
+                    SqlCommand updatevalue = new SqlCommand($"INSERT INTO {table_choice.SelectedItem.ToString()} ({columns}) VALUES ({row})", dB_Connect.GetConnection());
+
+                    updatevalue.ExecuteNonQuery();
+
+                }*/
+            }
+
+        private void AddMovie_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Film_Editor form = new Film_Editor();
+            form.Show();
         }
     }
 }
