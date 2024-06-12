@@ -26,15 +26,15 @@
         <Label Foreground="#FF969696" Content="Название фильма:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Height="25" Margin="10,10,0,0"/>
         <TextBox Foreground="#FF969696" Background="#FF323232" Margin="10,227,10,10" materialDesign:HintAssist.Hint="О чем фильм" x:Name="Desctiption_1" TextWrapping="Wrap"  RenderTransformOrigin="0,1" Grid.RowSpan="2"/>
         <StackPanel Margin="64,46,291,0"  VerticalAlignment="Top" Height="176">
-            <ComboBox materialDesign:HintAssist.Hint="Правообладатель" Foreground="#FF969696" Background="#FF323232"  x:Name="pravoobladatel" Width="176" Height="25" />
-            <ComboBox materialDesign:HintAssist.Hint="Жанр" Foreground="#FF969696" Background="#FF323232" x:Name="genre_1" Width="176" Height="25" Margin="0,10,0,10" />
-            <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Актеры"  x:Name="Actors_1" Width="176" Height="25" />
-            <ComboBox materialDesign:HintAssist.Hint="Продюсер" Foreground="#FF969696" Background="#FF323232" x:Name="producer" Width="176" Height="25" Margin="0,10,0,0" />
+            <ComboBox materialDesign:HintAssist.Hint="Правообладатель" Foreground="#FF969696" Background="#FF323232"  x:Name="pravoobladatel" Width="176" Height="25" SelectionChanged="pravoobladatel_SelectionChanged" />
+            <ComboBox materialDesign:HintAssist.Hint="Жанр" Foreground="#FF969696" Background="#FF323232" x:Name="genre_1" Width="176" Height="25" Margin="0,10,0,10" SelectionChanged="genre_1_SelectionChanged" />
+            <ComboBox Foreground="#FF969696" Background="#FF323232" materialDesign:HintAssist.Hint="Актеры"  x:Name="Actors_1" Width="176" Height="25" SelectionChanged="Actors_1_SelectionChanged" />
+            <ComboBox materialDesign:HintAssist.Hint="Продюсер" Foreground="#FF969696" Background="#FF323232" x:Name="producer" Width="176" Height="25" Margin="0,10,0,0" SelectionChanged="producer_SelectionChanged" />
             <TextBox Foreground="#FF969696" x:Name="Chronometrazh" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Хронометраж" Width="176" Height="25" Margin="0,12,0,0"/>
         </StackPanel>
         <StackPanel Margin="300,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="176" Width="176">
-            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232"  x:Name="coutry" Width="176" Height="25" SelectionChanged="coutry_SelectionChanged" />
-            <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" x:Name="Director_1" Width="176" Height="25" Margin="0,10,0,10" />
+            <ComboBox materialDesign:HintAssist.Hint="Страна" Foreground="#FF969696" Background="#FF323232"  x:Name="coutry" Width="176" Height="25" SelectionChanged="coutry_SelectionChanged" ItemsSource="{Binding SelectedIndexChanged, ElementName=coutry}" />
+            <ComboBox materialDesign:HintAssist.Hint="Режиссер" Foreground="#FF969696" Background="#FF323232" x:Name="Director_1" Width="176" Height="25" Margin="0,10,0,10" SelectionChanged="Director_1_SelectionChanged" />
             <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Рейтинг" x:Name="Reitings_1" Width="176" Height="25"/>
             <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Год" Width="176" x:Name="Year_1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Margin="0,10,0,0"/>
             <TextBox Foreground="#FF969696" Background="#FF323232" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Бюджет" Width="176" x:Name="Budget_1" Height="25" Margin="0,10,0,0"/>
