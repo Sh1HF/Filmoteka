@@ -21,9 +21,12 @@ namespace flimoteka
     /// </summary>
     public partial class Film_Editor : Window
     {
+        SqlConnection sqlConnection;
+        DB_connect dB_Connect = new DB_connect();
         //Добавление в таблицу фильм
-        string SQL_1 = "INSERT INTO Films(name,description,runtime,release_date,budget)" +
-            "VALUES (@Name,@Description,@Runtime,@Release,@Budget) SET @idFilm = SCOPE_IDENTITY()";
+        string SQL_1 = "INSERT INTO Films(name,description,runtime,release_date,budget) VALUES (@Name,@Description,@Runtime,@Release,@Budget); SET @id=SCOPE_IDENTITY()";
+
+
         //Добавление в смежную таблицу актер фильм
         string SQL_2 = "INSERT INTO S_ActorFilms(ID_Actors,ID_Films) VALUES (@idActors,@idFilms)";
         //Добавление в смежную таблицу страна фильм
@@ -36,18 +39,18 @@ namespace flimoteka
         string SQL_6 = "INSERT INTO S_ProdusersFilms(ID_Produsers,ID_Films) VALUES (@idProdusers,@idFilms)";
         //Добавление в смежную таблицу режжисер фильм
         string SQL_7 = "INSERT INTO S_DirectorFilms(ID_Director,ID_Films) VALUES (@idDirector,@idFilms)";
-
+        string ravoobladatelName = "";
         public Film_Editor()
         {
-            InitializeComponent();
+        }
         }
 
         private void OnClosing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
             base.OnClosing(e);
-        }
     }
 
 
+}
 }
