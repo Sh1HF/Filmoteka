@@ -17,6 +17,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static MaterialDesignThemes.Wpf.Theme;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace flimoteka
 {
@@ -28,6 +30,8 @@ namespace flimoteka
         SqlConnection sqlConnection;
 
         DB_connect dB_Connect = new DB_connect();
+
+        string columnName;
 
         public AdminControl()
         {
@@ -114,12 +118,41 @@ namespace flimoteka
                 table_reader.Fill(dt);
                 tablesgrid.ItemsSource = dt.DefaultView;
 
+                foreach (DataGridColumn column in tablesgrid.Columns)
+                {
+                    if (!(column.Header.ToString().Contains("id")) && (!column.Header.ToString().Contains("ID"))){ 
+                    columnName = column.Header.ToString();
+                    }
+
+                }
             }
         }
 
         private void ComboBox_DropDownOpened(object sender, EventArgs e)
         {
             table_choice.SelectedItem = null;
+        }
+
+        private void Search_tables(object sender, RoutedEventArgs e)
+        {
+            string tableitem = table_choice.SelectedItem.ToString();
+
+            SqlCommand catalog = new SqlCommand($"select * from {tableitem} where {columnName} LIKE '%{catalog_search.Text}%'", dB_Connect.GetConnection());
+
+            DataTable dt = new DataTable("tables");
+
+            SqlDataAdapter film_reader = new SqlDataAdapter(catalog);
+            film_reader.Fill(dt);
+            tablesgrid.ItemsSource = dt.DefaultView;
+        }
+
+        private void tablesgrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            string tableitem = tablesgrid.SelectedItem.ToString();
+            if (tableitem != null)
+            {
+
+            }
         }
     }
 }
