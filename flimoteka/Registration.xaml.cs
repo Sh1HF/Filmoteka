@@ -93,7 +93,7 @@ namespace flimoteka
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Error;
                 MessageBoxResult result;
-                result = System.Windows.MessageBox.Show("Не все поля заполнены", "Исключение не обработанно", button, icon, MessageBoxResult.Yes);
+                result = System.Windows.MessageBox.Show("Ошибка подключения к БД", "Исключение не обработанно", button, icon, MessageBoxResult.Yes);
             
             }
         }

@@ -67,6 +67,11 @@ namespace flimoteka
                         this.Hide();
                         form.Show();
                     }
+                    else if (Convert.ToInt32(DatR["ID_Rules"]) != 1) {
+                        UserUI form = new UserUI();
+                        this.Hide();
+                        form.Show();
+                    }
                     else
                     {
                         MessageBoxButton button = MessageBoxButton.OK;

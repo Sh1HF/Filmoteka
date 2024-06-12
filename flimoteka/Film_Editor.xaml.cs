@@ -264,40 +264,49 @@ namespace flimoteka
         {
             SqlConnection sqlConnection;
             DB_connect dB_Connect = new DB_connect();
-            dB_Connect.openConnection();
-
-            SqlCommand Command0 = new SqlCommand(SQL_1M, dB_Connect.GetConnection());
-            Command0.Parameters.AddWithValue("Name", Name_1.Text);
-            Command0.Parameters.AddWithValue("Description", Desctiption_1.Text);
-            Command0.Parameters.AddWithValue("Runtime", Chronometrazh.Text);
-            Command0.Parameters.AddWithValue("Release", Year_1.Text);
-            Command0.Parameters.AddWithValue("Budget", Budget_1.Text);
-            Command0.Parameters.AddWithValue("idActors", actorsId);
-            Command0.Parameters.AddWithValue("idCountry", countryId);
-            Command0.Parameters.AddWithValue("idGenre", genreId);
-            Command0.Parameters.AddWithValue("idProdusers", produserId);
-            Command0.Parameters.AddWithValue("idDirector", directorId);
-            Command0.Parameters.AddWithValue("ScoreR", Reitings_1.Text);
-            Command0.Parameters.AddWithValue("recense", Name_1.Text);
-            Command0.Parameters.AddWithValue("PravoobladatelID", ravoobladatelId);
-
-            if (pravoobladatel.SelectedIndex > -1 && Director_1.SelectedIndex > -1 && producer.SelectedIndex > -1 && Actors_1.SelectedIndex > -1 && genre_1.SelectedIndex > -1 && coutry.SelectedIndex > -1 && !string.IsNullOrEmpty(Name_1.Text) && !string.IsNullOrEmpty(Desctiption_1.Text) && !string.IsNullOrEmpty(Chronometrazh.Text) && !string.IsNullOrEmpty(Year_1.Text) && !string.IsNullOrEmpty(Budget_1.Text) && !string.IsNullOrEmpty(Reitings_1.Text) && !string.IsNullOrEmpty(Name_1.Text))
+            try
             {
-                Command0.ExecuteReader();
-                if (Command0 != null)
+                dB_Connect.openConnection();
+
+                SqlCommand Command0 = new SqlCommand(SQL_1M, dB_Connect.GetConnection());
+                Command0.Parameters.AddWithValue("Name", Name_1.Text);
+                Command0.Parameters.AddWithValue("Description", Desctiption_1.Text);
+                Command0.Parameters.AddWithValue("Runtime", Chronometrazh.Text);
+                Command0.Parameters.AddWithValue("Release", Year_1.Text);
+                Command0.Parameters.AddWithValue("Budget", Budget_1.Text);
+                Command0.Parameters.AddWithValue("idActors", actorsId);
+                Command0.Parameters.AddWithValue("idCountry", countryId);
+                Command0.Parameters.AddWithValue("idGenre", genreId);
+                Command0.Parameters.AddWithValue("idProdusers", produserId);
+                Command0.Parameters.AddWithValue("idDirector", directorId);
+                Command0.Parameters.AddWithValue("ScoreR", Reitings_1.Text);
+                Command0.Parameters.AddWithValue("recense", Name_1.Text);
+                Command0.Parameters.AddWithValue("PravoobladatelID", ravoobladatelId);
+
+                if (pravoobladatel.SelectedIndex > -1 && Director_1.SelectedIndex > -1 && producer.SelectedIndex > -1 && Actors_1.SelectedIndex > -1 && genre_1.SelectedIndex > -1 && coutry.SelectedIndex > -1 && !string.IsNullOrEmpty(Name_1.Text) && !string.IsNullOrEmpty(Desctiption_1.Text) && !string.IsNullOrEmpty(Chronometrazh.Text) && !string.IsNullOrEmpty(Year_1.Text) && !string.IsNullOrEmpty(Budget_1.Text) && !string.IsNullOrEmpty(Reitings_1.Text) && !string.IsNullOrEmpty(Name_1.Text))
+                {
+                    Command0.ExecuteReader();
+                    if (Command0 != null)
+                    {
+                        MessageBoxButton button = MessageBoxButton.OK;
+                        MessageBoxImage icon = MessageBoxImage.Information;
+                        MessageBoxResult result;
+                        result = System.Windows.MessageBox.Show("Запись успешно добавлена", "Успех", button, icon, MessageBoxResult.Yes);
+                    }
+                }
+                else
                 {
                     MessageBoxButton button = MessageBoxButton.OK;
-                    MessageBoxImage icon = MessageBoxImage.Information;
+                    MessageBoxImage icon = MessageBoxImage.Error;
                     MessageBoxResult result;
-                    result = System.Windows.MessageBox.Show("Запись успешно добавлена", "Успех", button, icon, MessageBoxResult.Yes);
+                    result = System.Windows.MessageBox.Show("Введены не все данные в форме", "Ошибка заполнения БД", button, icon, MessageBoxResult.Yes);
                 }
             }
-            else
-            {
+            catch(SqlException ex) {
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Error;
                 MessageBoxResult result;
-                result = System.Windows.MessageBox.Show("Введены не все данные в форме", "Ошибка заполнения БД", button, icon, MessageBoxResult.Yes);
+                result = System.Windows.MessageBox.Show("Ошибка подключения к БД", "Исключение не обработанно", button, icon, MessageBoxResult.Yes);
             }
         }
         /*
