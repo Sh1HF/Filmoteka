@@ -68,9 +68,7 @@ namespace flimoteka
 
         private void LoadSubs(object sender, RoutedEventArgs e)
         {
-            SqlCommand subs = new SqlCommand("SELECT abonnementName as 'Абонемент',rulesPrivilegies as 'Права',DateAbonement as 'Дата абонемента',login as 'Логин',surname as 'Фамилия',name as 'Имя',age as 'Дата рождения' FROM Autorisation JOIN Rules ON Rules.ID_Rules = Autorisation.ID_Rules\r\nJOIN Abonnement ON Abonnement.ID_Abonnement = Autorisation.ID_Abonement where abonnementName=@abonnementName;", dB_Connect.GetConnection());
-
-            subs.Parameters.AddWithValue("abonnementName", subscribename.Text);
+            SqlCommand subs = new SqlCommand($"SELECT abonnementName as 'Абонемент',rulesPrivilegies as 'Права',DateAbonement as 'Дата абонемента',login as 'Логин',surname as 'Фамилия',name as 'Имя',age as 'Дата рождения' FROM Autorisation JOIN Rules ON Rules.ID_Rules = Autorisation.ID_Rules\r\nJOIN Abonnement ON Abonnement.ID_Abonnement = Autorisation.ID_Abonement where (abonnementName LIKE '%{subscribename.Text}%' OR rulesPrivilegies LIKE '%{subscribename.Text}%' OR DateAbonement LIKE '%{subscribename.Text}%' OR login LIKE '%{subscribename.Text}%' OR surname LIKE '%{subscribename.Text}%' OR name LIKE '%{subscribename.Text}%' OR age LIKE '%{subscribename.Text}%');", dB_Connect.GetConnection());
 
             DataTable dt = new DataTable("tables");
 
@@ -320,7 +318,9 @@ namespace flimoteka
                 TabItem selectedTab = (TabItem)tabcontrol.SelectedItem;
                 if (selectedTab != null & selectedTab == editload) 
                 {
-                    LoadPageInTab(editload, new Uri("Film_Editor.xaml", UriKind.Relative));
+                    Film_Editor form = new Film_Editor();
+                    form.Show();
+                    //LoadPageInTab(editload, new Uri("Film_Editor.xaml", UriKind.Relative));
                 }
             }
         }

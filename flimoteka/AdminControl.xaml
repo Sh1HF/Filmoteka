@@ -48,7 +48,7 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="editload" Header="Добавление фильмов" Height="44" Background="#087099" Foreground="#F0F0F0">
-                <Frame x:Name="filmedit" NavigationUIVisibility="Hidden" Loaded="filmedit_Loaded" Source="Film_Editor.xaml"/>
+                <Frame x:Name="filmedit" NavigationUIVisibility="Hidden" Loaded="filmedit_Loaded"/>
             </TabItem>
         </TabControl>
     </Grid>
