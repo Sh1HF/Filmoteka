@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -147,6 +148,51 @@ namespace flimoteka
             SqlDataAdapter film_reader = new SqlDataAdapter(films);
             film_reader.Fill(filmssearch);
             FilmList.ItemsSource = filmssearch.DefaultView;
+        }
+
+        private void country_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void director_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void rank_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void year_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void budget_filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void apply_filter_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (country_filter.SelectedItem != null)
+            {
+                string country_sel = country_filter.SelectedItem.ToString();
+                //string director_sel = director_filter.SelectedItem.ToString();
+                //string ranking_sel = rank_filter.SelectedItem.ToString();
+                //string year_sel = year_filter.SelectedItem.ToString();
+                //string budget_sel = budget_filter.SelectedItem.ToString();
+
+                FilmList.Items.Filter(country_sel);
+            }
+        }
+
+        private void OnClosing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            base.OnClosing(e);
         }
     }
 }

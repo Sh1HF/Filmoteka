@@ -10,7 +10,7 @@
         Background="#282828"
         Title="AdminControl" Height="768" Width="1366">
     <Grid>
-        <TabControl>
+        <TabControl x:Name="tabcontrol" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Админ панель" Background="#FF00B4FB" Foreground="#F0F0F0"  Height="46">
                 <Grid  Background="#282828">
                     <Grid.ColumnDefinitions>
@@ -46,6 +46,9 @@
                     <ComboBox x:Name="table_choice" HorizontalAlignment="Left" Margin="40,15,0,0" Width="120" VerticalAlignment="Top" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Выберите таблицу" SelectionChanged="ComboBox_SelectionChanged" DropDownOpened="ComboBox_DropDownOpened"/>
 
                 </Grid>
+            </TabItem>
+            <TabItem x:Name="editload" Header="Добавление фильмов" Height="44" Background="#087099" Foreground="#F0F0F0">
+                <Frame x:Name="filmedit" NavigationUIVisibility="Hidden" Loaded="filmedit_Loaded" Source="Film_Editor.xaml"/>
             </TabItem>
         </TabControl>
     </Grid>

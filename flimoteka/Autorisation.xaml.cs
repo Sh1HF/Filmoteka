@@ -108,5 +108,13 @@ namespace flimoteka
                 this.Hide();
                 form.Show();
             }
+
+        private void continue_noauth_btn_Click(object sender, RoutedEventArgs e)
+        {
+            UserUI form = new UserUI();
+
+            this.Hide();
+            form.Show();
         }
+    }
     }

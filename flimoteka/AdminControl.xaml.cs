@@ -21,6 +21,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static MaterialDesignThemes.Wpf.Theme;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using TabControl = System.Windows.Controls.TabControl;
+using TabItem = System.Windows.Controls.TabItem;
 
 namespace flimoteka
 {
@@ -208,26 +210,25 @@ namespace flimoteka
 
                 string indexcolumn = tablesgrid.ColumnFromDisplayIndex(0).Header.ToString();
 
-                string column = tablesgrid.CurrentCell.Column.Header.ToString();
+                string column = e.Column.Header.ToString();
+                //string column = tablesgrid.CurrentCell.Column.Header.ToString();
 
                 var value = (e.EditingElement as System.Windows.Controls.TextBox).Text;
 
-                var unchanged = cell.Row.ItemArray.Last().ToString();
+                var unchanged = cell.Row.ItemArray[tablesgrid.CurrentCell.Column.DisplayIndex];
 
-                if (value != null && !value.Equals(unchanged) && !value.Equals(index.ToString())) 
+                //var unchanged = cell.Row.ItemArray.Last().ToString();
+
+                if (!value.Equals(unchanged) && !value.Equals(index.ToString())) 
                 {
-                    using (dB_Connect.GetConnection())
-                    {
-                        if (dB_Connect.GetConnection().State == System.Data.ConnectionState.Open)
+                        if (dB_Connect.GetConnection().State == System.Data.ConnectionState.Closed)
                         {
                             dB_Connect.openConnection();
-                        }
 
+                        }
                         SqlCommand updatevalue = new SqlCommand($"UPDATE {table_choice.SelectedItem.ToString()} SET {column} = '{value}' WHERE {indexcolumn} = {index}", dB_Connect.GetConnection());
 
                         updatevalue.ExecuteNonQuery();
-
-                    }
                 }
 
             }
@@ -275,6 +276,53 @@ namespace flimoteka
         {
             Film_Editor form = new Film_Editor();
             form.Show();
+        }
+
+        private void filmedit_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void LoadPageInTab(TabItem tabItem, Uri pageUri)
+        {
+            Frame frame = FindVisualChild<Frame>(tabItem);
+            if (frame != null)
+            {
+                frame.Source = pageUri;
+            }
+        }
+
+        private T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T typedChild)
+                {
+                    return typedChild;
+                }
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                    {
+                        return childOfChild;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Source is TabControl)
+            {
+                TabItem selectedTab = (TabItem)tabcontrol.SelectedItem;
+                if (selectedTab != null & selectedTab == editload) 
+                {
+                    LoadPageInTab(editload, new Uri("Film_Editor.xaml", UriKind.Relative));
+                }
+            }
         }
     }
 }
