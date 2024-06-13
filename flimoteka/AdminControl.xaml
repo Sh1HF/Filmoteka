@@ -23,7 +23,7 @@
                     </Grid.RowDefinitions>
                     <Button Content="Поиск" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="95" Grid.Column="1" Margin="10,0,0,0" Click="LoadSubs"  />
                     <TextBox  materialDesign:TextFieldAssist.UnderlineBrush="PeachPuff"  Foreground="#FF969696" Background="#FF323232" x:Name="subscribename" HorizontalAlignment="Center" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Введите название подпии" VerticalAlignment="Center" Width="1124" Height="30"/>
-                    <DataGrid x:Name="AutorisationGrid" RowBackground="#FF404040" Background="#FF323232" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,37,10,-17" Grid.Row="1" Grid.ColumnSpan="2" Foreground="White" AlternatingRowBackground="#FF4C4C4C" RowEditEnding="AutorisationGrid_RowEditEnding" CellEditEnding="AutorisationGrid_CellEditEnding" />
+                    <DataGrid x:Name="AutorisationGrid" RowBackground="#FF404040"  Background="#FF323232" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,37,10,-17" Grid.Row="1" Grid.ColumnSpan="2" Foreground="White" AlternatingRowBackground="#FF4C4C4C" RowEditEnding="AutorisationGrid_RowEditEnding" CellEditEnding="AutorisationGrid_CellEditEnding" />
                     <Button x:Name="Refresh_btn" Content="Обновить" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="95" Grid.Column="1" Margin="117,0,0,0" Click="Refresh_btn_Click"  />
                     <Label x:Name="tab1namlbl" Content="Редактирование подписок" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Grid.Row="1" Foreground="#E5FFFFFF" FontSize="16"/>
                 </Grid>
@@ -36,16 +36,16 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0*"/>
-                        <ColumnDefinition Width="1151*"/>
-                        <ColumnDefinition Width="102*"/>
+                        <ColumnDefinition Width="1146*"/>
+                        <ColumnDefinition Width="107*"/>
                         <ColumnDefinition Width="113*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="Search" Background="#087099" Foreground="#F0F0F0" Grid.Column="2" Content="Поиск" Margin="1,11,5,6" Click="Search_tables"/>
                     <TextBox x:Name="catalog_search" Foreground="#FF969696" Background="#FF323232" Grid.Column="1" HorizontalAlignment="Left" Margin="198,12,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Введите слово" VerticalAlignment="Top" Width="920" Height="30"/>
                     <DataGrid x:Name="tablesgrid" Foreground="#FF969696" Background="#FF323232" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,37,10,28" BorderBrush="#199C1A1A" Grid.Row="1" Grid.ColumnSpan="3" CellEditEnding="tablesgrid_CellEditEnding" RowEditEnding="Tablesgrid_RowEditEnding"/>
                     <Button x:Name="Add" Background="#087099" Foreground="#F0F0F0" Grid.Column="3" Content="Добавить" Margin="1,11,10,6"/>
-                    <ComboBox x:Name="table_choice" HorizontalAlignment="Left" Margin="40,15,0,0" Width="120" VerticalAlignment="Top" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Выберите таблицу" SelectionChanged="ComboBox_SelectionChanged" DropDownOpened="ComboBox_DropDownOpened"/>
-                    <Label x:Name="tab2namlbl" Content="Редактирование справочника" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Grid.Row="1" Foreground="#E5FFFFFF" FontSize="16"/>
+                    <ComboBox x:Name="table_choice" HorizontalAlignment="Left" Margin="40,15,0,0" Width="120" VerticalAlignment="Top" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Выберите таблицу" SelectionChanged="ComboBox_SelectionChanged" DropDownOpened="ComboBox_DropDownOpened" Height="25"/>
+                    <Label x:Name="tab2namlbl" Content="Редактирование справочника" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Grid.Row="1" Foreground="#E5FFFFFF" FontSize="16" Height="29" Width="228"/>
 
                 </Grid>
             </TabItem>
