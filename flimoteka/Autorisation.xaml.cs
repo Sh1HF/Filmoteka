@@ -43,9 +43,9 @@ namespace flimoteka
 
         private async void Button_LoginAsync(object sender, RoutedEventArgs e)
         {
-            //DB_connect.Connect();
 
             dB_Connect.openConnection();
+
             if (!string.IsNullOrEmpty(loginBTH.Text) && !string.IsNullOrWhiteSpace(passwordBTH.Password.ToString()))
             {
                 SqlCommand Command0 = new SqlCommand("SELECT * from [Autorisation] WHERE login=@login and passwd=@passwd", dB_Connect.GetConnection());
@@ -66,11 +66,13 @@ namespace flimoteka
                         AdminControl form = new AdminControl();
                         this.Hide();
                         form.Show();
+                        dB_Connect.closedConnection();
                     }
                     else if (Convert.ToInt32(DatR["ID_Rules"]) != 1) {
                         UserUI form = new UserUI();
                         this.Hide();
                         form.Show();
+                        dB_Connect.closedConnection();
                     }
                     else
                     {

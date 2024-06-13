@@ -57,6 +57,9 @@ namespace flimoteka
 
                 if (Password1.Password.ToString() == PasswordR.Password.ToString() && Password1.Password.Length >= 8 && !string.IsNullOrEmpty(date1) && !string.IsNullOrEmpty(LoginR.Text) && !string.IsNullOrEmpty(Password1.Password.ToString()) && !string.IsNullOrEmpty(Surname.Text) && !string.IsNullOrEmpty(NameR.Text))
                 {
+
+                    dB_Connect.openConnection();
+
                     SqlCommand Command0 = new SqlCommand("INSERT INTO Autorisation(ID_Rules,login,passwd,surname,name,age) VALUES (2,@login,@passwd,@Surname,@Name,@Age) ", dB_Connect.GetConnection());
 
                     Command0.Parameters.AddWithValue("login", LoginR.Text);
@@ -84,7 +87,7 @@ namespace flimoteka
                     MessageBoxButton button = MessageBoxButton.OK;
                     MessageBoxImage icon = MessageBoxImage.Error;
                     MessageBoxResult result;
-                    result = System.Windows.MessageBox.Show("Пароли не совпадают", "Ошибка", button, icon, MessageBoxResult.Yes);
+                    result = System.Windows.MessageBox.Show("Пароли не совпадают или не соответсвует требованиям", "Ошибка", button, icon, MessageBoxResult.Yes);
                 }
             }
 
